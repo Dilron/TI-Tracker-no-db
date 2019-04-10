@@ -1,25 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import axios from 'axios'
 import './App.css';
+import GameInit from './components/GameInit/GameInit'
+import Header from './components/Header'
+
+
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      playerArr: [],
+      gameStateInit: true,
+      factions: []
+    }
+  }
+
+
+  componentDidMount() {
+    axios.get('/api/start').then( res => console.log(res.data))
+    axios.get('/request/factions').then(res => {
+      this.setState({factions: res.data})
+    })
+  }
+
+  handleNewPlayer = (name) => {
+    axios.post('/directive/players', name).then(res => {
+      this.setState({playerArr: res.data})
+    })
+    .catch(err => console.log('err in handleNewPlayer(): ', err))
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <GameInit handleNewPlayer={this.handleNewPlayer} playerArr={this.state.playerArr} factions={this.state.factions}/>
       </div>
     );
   }
