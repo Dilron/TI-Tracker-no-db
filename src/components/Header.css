@@ -1,0 +1,10 @@
+.app-header {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+.app-header-title{
+    font-size: 200%
+}

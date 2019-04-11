@@ -1,0 +1,9 @@
+.player-form {
+    margin-bottom: 1em;
+    background: rgb(72, 70, 70);
+    padding: 0.4em;
+    border-radius: 0.4em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

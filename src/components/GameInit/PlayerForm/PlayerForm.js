@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import './PlayerForm.css'
 
-export default class PlayerFormTemplate extends Component {
+export default class PlayerForm extends Component {
     constructor(){
         super()
         this.state = {
@@ -29,14 +30,16 @@ export default class PlayerFormTemplate extends Component {
                 </div> 
                 :   
                 <div className='player-form'>
-                <h4>Player: {this.props.player.playerName}</h4>
-                <select onChange={(e) => this.handleSelector(e.target.value)} >
-                    <option value={0} >Select Faction</option>
-                    {this.props.factions.map(ele => {
-                        return <option key={ele.id} value={ele.id}>{ele.name}</option>
-                    })}
-                </select>
-                <button onClick={() => this.props.removePlayer(this.props.player.id)} >Remove Player</button>
+                    <div>
+                        <h4>Player: {this.props.player.playerName}</h4>
+                        <select onChange={(e) => this.handleSelector(e.target.value)} >
+                            <option value={0} >Select Faction</option>
+                            {this.props.factions.map(ele => {
+                                return <option key={ele.id} value={ele.id}>{ele.name}</option>
+                            })}
+                        </select>
+                    </div>
+                    <button onClick={() => this.props.removePlayer(this.props.player.id)} >Remove Player</button>
                 </div>
         )
     }

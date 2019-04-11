@@ -6,16 +6,14 @@ import Header from './components/Header'
 import GameTracker from './components/GameTracker/GameTracker'
 
 
-
 class App extends Component {
   constructor(){
     super()
     this.state = {
       playerArr: [],
-      gameStateInit: true,
+      gameStateInit: false,
     }
   }
-
 
   componentDidMount() {
     axios.get('/api/start').then( res => console.log(res.data))
@@ -53,15 +51,16 @@ class App extends Component {
       <div className="App">
         <Header />
         <GameInit 
-        handleNewPlayer={this.handleNewPlayer} 
         playerArr={this.state.playerArr} 
-        factions={this.state.factions}
+        handleNewPlayer={this.handleNewPlayer} 
         handleRemovePlayer={this.handleRemovePlayer}
         handleBeginGame={this.handleBeginGame}/>
       </div>
       :
-      <div>
-        <GameTracker />
+      <div className='App'>
+        <Header />
+        <GameTracker 
+        playerArr={this.state.playerArr}/>
       </div>
     );
   }

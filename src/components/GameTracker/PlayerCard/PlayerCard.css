@@ -1,0 +1,30 @@
+.player-card {
+    margin-bottom: 1em;
+    background: rgb(72, 70, 70);
+    padding: 0.4em;
+    border-radius: 0.4em;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+}
+
+.image-temp {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background: red;
+}
+
+.card-top-row {
+    display: flex;
+}
+
+.card-faction-title {
+    color: gold;
+    margin-right: 0.4em;
+}
+
+.card-player-name{
+    font-size: 100%;
+    color: rgb(233, 232, 232);
+}

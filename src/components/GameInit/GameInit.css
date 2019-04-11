@@ -1,0 +1,24 @@
+.game-init-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-init-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    background: rgb(72, 70, 70);
+    padding: 0.4em;
+    border-radius: 0.2em;
+    width: 100%;
+}
+
+.init-header-title {
+    font-size: 120%;
+}
+
+.begin-button {
+    width: 10em;
+}
