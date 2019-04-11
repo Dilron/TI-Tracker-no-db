@@ -12,16 +12,17 @@ class App extends Component {
     this.state = {
       playerArr: [],
       gameStateInit: true,
-      factions: []
     }
   }
 
 
   componentDidMount() {
     axios.get('/api/start').then( res => console.log(res.data))
-    axios.get('/request/factions').then(res => {
-      this.setState({factions: res.data})
+    .catch(err => console.log('Did not connect to server: ', err))
+    axios.get('/request/players').then( res => {
+      this.setState({playerArr: res.data})
     })
+    .catch(err => console.log('encountered error retrieving players array: ', err))
   }
 
   handleNewPlayer = (name) => {
