@@ -23,5 +23,10 @@ module.exports = {
         let pIndex = playerArr.findIndex((ele) => ele.id === id)
         playerArr.splice(pIndex, 1)
         res.send(playerArr)
+    },
+    finalize: (req, res) => {
+        let newPlayerArr = req.body
+        playerArr = [...newPlayerArr]
+        res.send(playerArr)
     }
 }

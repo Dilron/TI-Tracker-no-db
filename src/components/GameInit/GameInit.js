@@ -63,6 +63,14 @@ export default class GameInit extends Component {
         this.props.handleRemovePlayer(parseId)
     }
 
+    beginGame = () => {
+        if(this.state.stagingPlayerArr.every((ele) => ele.gameRace.id !== 0)){
+            this.props.handleBeginGame(this.state.stagingPlayerArr)
+        } else {
+            alert('All players must select a faction')
+        }
+    }
+
     render(){
         let {factions} = this.state
         return(
@@ -81,7 +89,7 @@ export default class GameInit extends Component {
                     removePlayer={this.removePlayer}
                     />
                 })}
-                <button>Begin Game</button>
+                <button onClick={() => this.beginGame()} >Begin Game</button>
             </div>
         )
     }
