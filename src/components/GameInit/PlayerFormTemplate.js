@@ -25,6 +25,7 @@ export default class PlayerFormTemplate extends Component {
                     <select disabled>
                         <option>{`${this.state.selectorValue}`}</option>
                     </select>
+                    <button onClick={() => this.props.removePlayer(this.props.player.id)} >Remove Player</button>
                 </div> 
                 :   
                 <div className='player-form'>
@@ -35,6 +36,7 @@ export default class PlayerFormTemplate extends Component {
                         return <option key={ele.id} value={ele.id}>{ele.name}</option>
                     })}
                 </select>
+                <button onClick={() => this.props.removePlayer(this.props.player.id)} >Remove Player</button>
                 </div>
         )
     }

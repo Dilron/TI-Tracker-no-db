@@ -32,11 +32,22 @@ class App extends Component {
     .catch(err => console.log('err in handleNewPlayer(): ', err))
   }
 
+  handleRemovePlayer = (playerId) => {
+    axios.delete(`/directive/players/${playerId}`).then(res => {
+      this.setState({playerArr: res.data})
+    })
+    .catch(err => console.log('error encountered removing player: ', err))
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <GameInit handleNewPlayer={this.handleNewPlayer} playerArr={this.state.playerArr} factions={this.state.factions}/>
+        <GameInit 
+        handleNewPlayer={this.handleNewPlayer} 
+        playerArr={this.state.playerArr} 
+        factions={this.state.factions}
+        handleRemovePlayer={this.handleRemovePlayer}/>
       </div>
     );
   }

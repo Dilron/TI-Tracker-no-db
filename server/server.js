@@ -18,3 +18,5 @@ app.post('/directive/players', PlayerCtrl.newPlayer)
 
 app.get('/api/start', (req, res) => {res.send('server connected')})
 
+app.delete('/directive/players/:id', PlayerCtrl.remove)
+
