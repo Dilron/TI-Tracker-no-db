@@ -7,14 +7,24 @@
 .player-card-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     width: 70%;
 }
 
 .tracker-control-panel {
-    background: rgb(72, 70, 70);
     border-radius: 0.4em;
+    background: rgba(48, 48, 48, 0.762);
+    border: solid rgb(160, 159, 159) 2px;
+    box-shadow: 1px 1px 3px 0px rgb(160,159,159), inset -1px -1px 3px 0px rgb(160,159,159),
+                inset 1px 1px 3px 0px rgb(160,159,159), -1px -1px 3px 0px rgb(160,159,159);
     padding: 2%;
-    width: 25%;
+    width: 23%;
     margin-bottom: 1em;
+}
+
+
+
+.control-panel-buttons {
+    width: 100%;
+    margin-bottom: .7em;
 }

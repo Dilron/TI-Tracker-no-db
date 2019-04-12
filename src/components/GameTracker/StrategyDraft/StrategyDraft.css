@@ -1,4 +1,4 @@
-.speaker-panel {
+.draft-panel {
     background: rgba(48, 48, 48, 0.762);
     border: solid rgb(160, 159, 159) 2px;
     box-shadow: 1px 1px 3px 0px rgb(160,159,159), inset -1px -1px 3px 0px rgb(160,159,159),
@@ -10,18 +10,23 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-}
-
-.thumbnail-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     align-items: center;
-    padding: 1em;
 }
 
-.panel-thumbnails {
-    width: 4em;
+.draft-panel-header {
+    margin-bottom: .5em;
+    font-size: 80%;
+}
+
+.draft-images-open {
+    width: 80%;
     height: auto;
-    margin: .5em;
+    margin-bottom: .4em;
+}
+
+.draft-images-closed {
+    width: 80%;
+    height: auto;
+    margin-bottom: .4em;
+    opacity: .5;
 }

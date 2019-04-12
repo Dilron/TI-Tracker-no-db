@@ -1,6 +1,9 @@
 .player-card {
     margin-bottom: 1em;
-    background: rgb(72, 70, 70);
+    background: rgba(48, 48, 48, 0.762);
+    border: solid rgb(160, 159, 159) 2px;
+    box-shadow: 1px 1px 3px 0px rgb(160,159,159), inset -1px -1px 3px 0px rgb(160,159,159),
+                inset 1px 1px 3px 0px rgb(160,159,159), -1px -1px 3px 0px rgb(160,159,159);
     padding: 2%;
     border-radius: 0.4em;
     width: 96%;
@@ -21,6 +24,7 @@
 .card-top-row {
     display: flex;
     justify-content: space-between;
+    height: 25%;
 }
 
 .card-title {
@@ -47,6 +51,13 @@
     color: rgb(233, 232, 232);
 }
 
+.card-bottom-row {
+    height: 75%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .speaker-token {
     height: 3.5em;
     width: auto;
@@ -59,4 +70,10 @@
     width: auto;
     transform: scaleY(1);
     opacity: 0;
+    margin-right: 1em;
+}
+
+.player-strategy-card{
+    height: 3em;
+    width: auto;
 }

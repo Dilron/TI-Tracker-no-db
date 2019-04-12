@@ -11,7 +11,7 @@ module.exports = {
             id: id++,
             playerName: playerName,
             gameRace: {id: 0},
-            token: '',
+            strategyCard: null,
             speaker: false
         }
         playerArr = [...playerArr, newPlayerObj]

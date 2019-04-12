@@ -3,21 +3,14 @@ import './PlayerCard.css'
 
 export default class PlayerCard extends Component {
 
-    // componentDidUpdate = () => {
-    //     let token = document.querySelector(`#speaker${this.props.player.id}`)
-    //     let arrow = document.querySelector(`#arrow${this.props.player.id}`)
-    //     if(this.props.player.speaker){
-    //         token.style.opacity = 1
-    //         arrow.style.opacity = 1
-    //     } else {
-    //         token.style.opacity = .5
-    //         arrow.style.opacity = 0
-    //     }
+    // componentDidMount(){
+    //     let cardStyleAdjust = document.querySelector(`#player-card-${this.props.player.id}`)
+    //     cardStyleAdjust.style.background = `${this.props.player.gameRace.}`
     // }
 
     render(){
         return(
-            <div className='player-card'>
+            <div id={`player-card-${this.props.player.id}`} className='player-card'>
                 <img className='image-avatar' src={this.props.player.gameRace.avatar} alt='faction avatar' />
                 <div className='card-info'>
                     <div className='card-top-row'>
@@ -49,6 +42,12 @@ export default class PlayerCard extends Component {
                         <img id={`arrow${this.props.player.id}`} 
                         className='speaker-arrow' 
                         src='http://res.freestockphotos.biz/pictures/3/3676-illustration-of-a-curved-up-3d-arrow-pv.png'/>
+                        { this.props.player.strategyCard ? 
+                        <img className='player-strategy-card' 
+                        src={`${this.props.player.strategyCard.image}`} />
+                        :
+                        <a></a>
+                        }
                     </div>
                 </div>
             </div>

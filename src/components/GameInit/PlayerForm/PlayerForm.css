@@ -1,6 +1,9 @@
 .player-form {
     margin-bottom: 1em;
-    background: rgb(72, 70, 70);
+    background: rgba(48, 48, 48, 0.762);
+    border: solid rgb(160, 159, 159) 2px;
+    box-shadow: 1px 1px 3px 0px rgb(160,159,159), inset -1px -1px 3px 0px rgb(160,159,159),
+                inset 1px 1px 3px 0px rgb(160,159,159), -1px -1px 3px 0px rgb(160,159,159);
     padding: 2%;
     border-radius: 0.4em;
     width: 96%;

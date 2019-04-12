@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlayerCard from './PlayerCard/PlayerCard';
 import SpeakerSelect from './SpeakerSelect/SpeakerSelect'
+import StrategyDraft from './StrategyDraft/StrategyDraft'
 import axios from 'axios'
 import './GameTracker.css'
 
@@ -11,6 +12,7 @@ export default class GameTracker extends Component {
             playerArr: [],
             strategyCards: [],
             showSpeaker: false,
+            showStrategy: false,
         }
     }
 
@@ -24,18 +26,6 @@ export default class GameTracker extends Component {
             })
             .catch(err => console.log('encountered error retrieving strategy cards array: ', err))
     }
-
-    // setSpeaker = (val) => {
-    //     let updatePlayerSpeaker = this.state.playerArr
-    //     updatePlayerSpeaker.map((ele) => {
-    //         if(ele.id === val){
-    //             ele.id = true
-    //         } else {
-    //             ele.id = false
-    //         }
-    //     })
-    //     this.setState({playerArr: updatePlayerSpeaker})
-    // }
 
     handleChooseSpeaker = (id) => {
         let idVal = parseInt(id)
@@ -64,19 +54,51 @@ export default class GameTracker extends Component {
         } else if(valInt !== 0 && valInt === 1){
             arrowToken.style.transform = `scaleY(1)`
         }
-        // if(arrowToken.style.transform === 'scaleY(-1)'){
-        //     arrowToken.style.transform = 'scaleY(1)'
-        // } else {
-        //     arrowToken.style.transform = 'scaleY(-1)'
-        // }
+    }
+
+    assignStrategyCard= (playerId, cardId) => {
+        let newPlayerArr = this.state.playerArr
+        let targetCard = this.state.strategyCards.find((ele) => ele.id === cardId)
+        newPlayerArr.map((ele) => {
+            if(ele.id === playerId){
+                ele.strategyCard = targetCard
+            }
+        })
+        this.setState({playerArr: newPlayerArr})
+        let newCardArr = this.state.strategyCards
+        newCardArr.map((ele) => {
+            if(ele.id === cardId){
+                ele.open = false
+            }
+        })
+        this.setState({strategyCards: newCardArr})
     }
 
     toggleSpeakerPanel = () => {
         this.setState({showSpeaker: !this.state.showSpeaker})
     }
+    
+    toggleStrategyPanel = () => {
+        this.setState({showStrategy: !this.state.showStrategy})
+    }
+
+    handleDraftReset = () => {
+        axios.get('/request/strategy-cards').then( res => {
+            this.setState({strategyCards: res.data})
+          })
+          .catch(err => console.log('encountered error retrieving strategy cards array: ', err))
+    }
+
+    clearStrategyCards = () => {
+        let newPlayerArr = this.state.playerArr
+        newPlayerArr.map((ele) => {
+            ele.strategyCard = null
+        })
+        this.setState({playerArr: newPlayerArr})
+    }
 
     render(){
-        let {playerArr, showSpeaker} = this.state
+        let {playerArr, showSpeaker, showStrategy, strategyCards} = this.state
         return(
             <div className='game-tracker-container'>
                 <div className='player-card-container'>
@@ -94,9 +116,18 @@ export default class GameTracker extends Component {
                 playerArr={playerArr}
                 toggleArrow={this.toggleArrow}
                 /> 
-                : 
+                : showStrategy ?
+                <StrategyDraft
+                strategyCards={strategyCards}
+                assignStrategyCard={this.assignStrategyCard}
+                playerArr={playerArr}
+                toggleStrategyPanel={this.toggleStrategyPanel}
+                handleDraftReset={this.handleDraftReset}
+                clearStrategyCards={this.clearStrategyCards} />
+                :
                 <div className='tracker-control-panel'>
-                    <button onClick={() => this.toggleSpeakerPanel()}>Choose Speaker</button>
+                    <button className='control-panel-buttons' onClick={() => this.toggleSpeakerPanel()}>Choose Speaker</button>
+                    <button className='control-panel-buttons' onClick={() => this.toggleStrategyPanel()}>Redraft Strategy Tokens</button>
                 </div>}
                 
             </div>
