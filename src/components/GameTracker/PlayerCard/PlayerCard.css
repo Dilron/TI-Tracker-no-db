@@ -1,9 +1,9 @@
 .player-card {
     margin-bottom: 1em;
     background: rgb(72, 70, 70);
-    padding: 0.4em;
+    padding: 2%;
     border-radius: 0.4em;
-    width: 100%;
+    width: 96%;
     display: flex;
     justify-content: left;
 }
@@ -13,6 +13,7 @@
     height: 3em;
     border-radius: 50%;
     background: red;
+    margin-right: .8em;
 }
 
 .card-top-row {
@@ -27,4 +28,18 @@
 .card-player-name{
     font-size: 100%;
     color: rgb(233, 232, 232);
+}
+
+.speaker-token {
+    height: 2.5em;
+    width: auto;
+    margin-right: .5em;
+    opacity: 0.5;
+}
+
+.speaker-arrow{
+    height: 2em;
+    width: auto;
+    transform: rotate(0deg);
+    opacity: 0;
 }

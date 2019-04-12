@@ -1,0 +1,19 @@
+.game-tracker-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+}
+
+.tracker-control-panel {
+    background: rgb(72, 70, 70);
+    border-radius: 0.4em;
+    padding: 2%;
+    width: 25%;
+    margin-bottom: 1em;
+}
