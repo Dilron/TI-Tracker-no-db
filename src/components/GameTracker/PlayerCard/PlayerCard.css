@@ -8,16 +8,29 @@
     justify-content: left;
 }
 
-.image-temp {
-    width: 3em;
-    height: 3em;
-    border-radius: 50%;
-    background: red;
+.card-info {
+    width: 100%;
+}
+
+.image-avatar {
+    width: auto;
+    height: 4em;
     margin-right: .8em;
 }
 
 .card-top-row {
     display: flex;
+    justify-content: space-between;
+}
+
+.card-title {
+    display: flex;
+    justify-content: left;
+}
+
+.vp-counter {
+    display: flex;
+    justify-content: right;
 }
 
 .card-faction-title {
@@ -31,14 +44,14 @@
 }
 
 .speaker-token {
-    height: 2.5em;
+    height: 3.5em;
     width: auto;
     margin-right: .5em;
     opacity: 0.5;
 }
 
 .speaker-arrow{
-    height: 2em;
+    height: 2.5em;
     width: auto;
     transform: rotate(0deg);
     opacity: 0;

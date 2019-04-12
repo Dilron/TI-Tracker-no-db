@@ -8,7 +8,7 @@ export default class GameTracker extends Component {
         super()
         this.state = {
             playerArr: [],
-
+            strategyCards: [],
         }
     }
 
@@ -16,7 +16,11 @@ export default class GameTracker extends Component {
         axios.get('/request/players').then( res => {
             this.setState({playerArr: res.data})
           })
-          .catch(err => console.log('encountered error retrieving players array: ', err))
+            .catch(err => console.log('encountered error retrieving players array: ', err))
+        axios.get('/request/strategy-cards').then( res => {
+              this.setState({strategyCards: res.data})
+            })
+            .catch(err => console.log('encountered error retrieving strategy cards array: ', err))
     }
 
     speakerToggling = (id) => {

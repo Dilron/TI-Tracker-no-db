@@ -19,6 +19,10 @@
     font-size: 120%;
 }
 
+.init-name-field {
+    margin-right: .5em;
+}
+
 .begin-button {
-    width: 10em;
+    width: 13em;
 }

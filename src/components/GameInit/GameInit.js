@@ -86,7 +86,7 @@ export default class GameInit extends Component {
                 <header className="game-init-header">
                     <h2 className='init-header-title'>Game Setup</h2>
                     <div>
-                        <input type='text' onChange={(e) => this.handleChange(e.target.value)} placeholder='Enter Name' />
+                        <input  className='init-name-field' type='text' onChange={(e) => this.handleChange(e.target.value)} placeholder='Enter Name' />
                         <button onClick={this.handleNewPlayer}>Add Player</button>
                     </div>
                 </header>

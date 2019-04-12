@@ -21,11 +21,29 @@ export default class PlayerCard extends Component {
     render(){
         return(
             <div className='player-card'>
-                <h5 className='image-temp'></h5>
+                <img className='image-avatar' src={this.props.player.gameRace.avatar} alt='faction avatar' />
                 <div className='card-info'>
                     <div className='card-top-row'>
-                        <h4 className='card-faction-title'>{`${this.props.player.gameRace.name}`}</h4> 
-                        <h5 className='card-player-name'>({`${this.props.player.playerName}`})</h5>
+                        <div className='card-title'>
+                            <h4 className='card-faction-title'>{`${this.props.player.gameRace.name}`}</h4> 
+                            <h5 className='card-player-name'>({`${this.props.player.playerName}`})</h5>
+                        </div>
+                        <div className='vp-counter'>
+                            <h5>Victory Points:</h5>
+                            <select>
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
                     </div>
                     <div className='card-bottom-row'>
                         <img onClick={() => this.props.speakerToggling(this.props.speakerId)} id={`speaker${this.props.speakerId}`} className='speaker-token' src='http://www.preeminent.org/steve/games/ti3/ti3demo/images/chits/SpeakerToken.gif'/>

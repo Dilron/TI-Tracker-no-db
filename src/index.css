@@ -47,7 +47,6 @@ table {
 	border-spacing: 0;
 }
 
-
 body {
   height: 100%;
   background: black;
@@ -67,3 +66,56 @@ body {
   src: url("./HandelGotD-Bold.woff") format("woff");
 }
 
+button {
+  display: inline-block;
+  border: none;
+  padding: .5em 1em;
+  margin: 0;
+  text-decoration: none;
+  background: linear-gradient(rgb(222, 0, 0), rgb(252, 168, 12));
+  color: white;
+  font-family: HandelGothic;
+  font-size: 100%;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.30s ease-in-out;
+}
+
+button:hover,
+button:focus {
+    background: linear-gradient(rgb(184, 1, 1), rgb(226, 150, 10));
+}
+
+input {
+  background: rgb(65, 65, 65);
+  padding: .2em .5em;
+  border: 1px solid black;
+  color: white;
+  font-family: HandelGothic;
+  font-size: 100%;
+}
+
+input:focus {
+  background: black;
+  border: 1px solid black;
+}
+
+select {
+  display: inline-block;
+  font-size: 100%;
+  font-family: HandelGothic;
+  color: white;
+  line-height: normal;
+  padding: .2em .5em;
+  margin: 0;
+  border: 1px solid black;
+  background: rgb(65, 65, 65);
+}
+
+select:focus {
+  background: black;
+}
+
+select:disabled {
+  background: black;
+}

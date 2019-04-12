@@ -22,10 +22,12 @@ export default class PlayerForm extends Component {
         return(
             this.state.selectorDisable ? 
                 <div className='player-form'>
-                    <h4>Player: {this.props.player.playerName}</h4>
-                    <select disabled>
-                        <option>{`${this.state.selectorValue}`}</option>
-                    </select>
+                    <div>
+                        <h4>Player: {this.props.player.playerName}</h4>
+                        <select disabled>
+                            <option>{`${this.state.selectorValue}`}</option>
+                        </select>
+                    </div>
                     <button onClick={() => this.props.removePlayer(this.props.player.id)} >Remove Player</button>
                 </div> 
                 :   
