@@ -1,0 +1,8 @@
+.pax-magnifica {
+    display: inline-block;
+    text-align: center;
+    font-size: 150%;
+    background:linear-gradient(rgb(222, 0, 0), rgb(252, 168, 12));
+    margin-bottom: 2em;
+    padding: .5em;
+}

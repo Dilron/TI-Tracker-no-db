@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
 import GameInit from './components/GameInit/GameInit'
-import Header from './components/Header'
+import Header from './components/HeadFoot/Header'
+import Footer from './components/HeadFoot/Footer'
 import GameTracker from './components/GameTracker/GameTracker'
 
 
@@ -55,12 +56,13 @@ class App extends Component {
         handleNewPlayer={this.handleNewPlayer} 
         handleRemovePlayer={this.handleRemovePlayer}
         handleBeginGame={this.handleBeginGame}/>
+        <Footer />
       </div>
       :
       <div className='App'>
         <Header />
-        <GameTracker 
-        playerArr={this.state.playerArr}/>
+        <GameTracker />
+        <Footer />
       </div>
     );
   }

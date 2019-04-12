@@ -11,7 +11,6 @@ export default function Header() {
                     </div>
                     <img className='twilight-png' src='http://i236.photobucket.com/albums/ff4/MrBlarney/TwilightImperium/TwilightImperium4e_Logo.png~original'/>
                 </header>
-                <nav className='header-sub-pax'>PAX MAGNIFICA BELLUM GLORIOSUM</nav>
             </div>
         )   
 }

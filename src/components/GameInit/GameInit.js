@@ -43,6 +43,7 @@ export default class GameInit extends Component {
     handleNewPlayer = () => {
         let nameObj = {name: this.state.nameInput}
         this.props.handleNewPlayer(nameObj)
+        this.setState({nameInput: ''})
     }
 
     handleChange = (val) => {
@@ -86,7 +87,7 @@ export default class GameInit extends Component {
                 <header className="game-init-header">
                     <h2 className='init-header-title'>Game Setup</h2>
                     <div>
-                        <input  className='init-name-field' type='text' onChange={(e) => this.handleChange(e.target.value)} placeholder='Enter Name' />
+                        <input  value={this.state.nameInput} className='init-name-field' type='text' onChange={(e) => this.handleChange(e.target.value)} placeholder='Enter Name' />
                         <button onClick={this.handleNewPlayer}>Add Player</button>
                     </div>
                 </header>

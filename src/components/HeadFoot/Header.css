@@ -1,7 +1,9 @@
 .app-header {
+    background: black;
     border: 1px solid red;
     display: flex;
     flex-direction: column;
+    margin-bottom: 2em;
 }
 
 .app-header-title{
@@ -17,8 +19,3 @@
     height: auto;
 }
 
-.header-sub-pax {
-    text-align: center;
-    background:linear-gradient(rgb(222, 0, 0), rgb(252, 168, 12));
-    margin-bottom: 2em;
-}

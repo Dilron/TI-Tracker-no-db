@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PlayerCard from './PlayerCard/PlayerCard';
+import SpeakerSelect from './SpeakerSelect/SpeakerSelect'
 import axios from 'axios'
 import './GameTracker.css'
 
@@ -9,6 +10,7 @@ export default class GameTracker extends Component {
         this.state = {
             playerArr: [],
             strategyCards: [],
+            showSpeaker: false,
         }
     }
 
@@ -23,28 +25,58 @@ export default class GameTracker extends Component {
             .catch(err => console.log('encountered error retrieving strategy cards array: ', err))
     }
 
-    speakerToggling = (id) => {
-        let speakerToken = document.querySelector(`#speaker${id}`)
-        let arrowToken = document.querySelector(`#arrow${id}`)
-        if(speakerToken.style.opacity === '1'){
-            speakerToken.style.opacity = 0.5
-            arrowToken.style.opacity = 0
-        } else {
-            speakerToken.style.opacity = 1
-            arrowToken.style.opacity = 1
-        }
+    // setSpeaker = (val) => {
+    //     let updatePlayerSpeaker = this.state.playerArr
+    //     updatePlayerSpeaker.map((ele) => {
+    //         if(ele.id === val){
+    //             ele.id = true
+    //         } else {
+    //             ele.id = false
+    //         }
+    //     })
+    //     this.setState({playerArr: updatePlayerSpeaker})
+    // }
+
+    handleChooseSpeaker = (id) => {
+        let idVal = parseInt(id)
+        let arr = this.state.playerArr
+        arr.forEach((ele) => {
+            let speakerToken = document.querySelector(`#speaker${ele.id}`)
+            let arrowToken = document.querySelector(`#arrow${ele.id}`)
+            if(ele.id !== idVal){
+                speakerToken.style.opacity = 0.5
+                arrowToken.style.opacity = 0
+            } else {
+                speakerToken.style.opacity = 1
+                arrowToken.style.opacity = 1
+            }
+
+        })
+        this.setState({showSpeaker: false})
     }
 
-    arrowToggling = (id) => {
-        let arrowToken = document.querySelector(`#arrow${id}`)
-        if(arrowToken.style.transform === 'scaleY(-1)'){
-            arrowToken.style.transform = 'scaleY(1)'
-        } else {
-            arrowToken.style.transform = 'scaleY(-1)'
+    toggleArrow = (val, id) => {
+        let valInt = parseInt(val)
+        let idInt = parseInt(id)
+        let arrowToken = document.querySelector(`#arrow${idInt}`)
+        if(valInt !== 0 && valInt === -1){
+            arrowToken.style.transform = `scaleY(-1)`
+        } else if(valInt !== 0 && valInt === 1){
+            arrowToken.style.transform = `scaleY(1)`
         }
+        // if(arrowToken.style.transform === 'scaleY(-1)'){
+        //     arrowToken.style.transform = 'scaleY(1)'
+        // } else {
+        //     arrowToken.style.transform = 'scaleY(-1)'
+        // }
+    }
+
+    toggleSpeakerPanel = () => {
+        this.setState({showSpeaker: !this.state.showSpeaker})
     }
 
     render(){
+        let {playerArr, showSpeaker} = this.state
         return(
             <div className='game-tracker-container'>
                 <div className='player-card-container'>
@@ -52,12 +84,21 @@ export default class GameTracker extends Component {
                         return <PlayerCard
                         key={ele.id}
                         player={ele}
-                        speakerId={ele.id}
                         speakerToggling={this.speakerToggling}
                         arrowToggling={this.arrowToggling} />
                     })}
                 </div>
-                <div className='tracker-control-panel'></div>
+                {showSpeaker ? 
+                <SpeakerSelect
+                handleChooseSpeaker={this.handleChooseSpeaker}
+                playerArr={playerArr}
+                toggleArrow={this.toggleArrow}
+                /> 
+                : 
+                <div className='tracker-control-panel'>
+                    <button onClick={() => this.toggleSpeakerPanel()}>Choose Speaker</button>
+                </div>}
+                
             </div>
         )
     }

@@ -49,16 +49,13 @@ table {
 
 body {
   height: 100%;
-  background: black;
+  background-image: url("https://apod.nasa.gov/apod/image/1901/IC342Medvedevas.jpg");
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   vertical-align: baseline;
   font-size: 100%;
-  font-family: HandelGothic;
+  font-family: HandelGothic, 'Droid Sans', sans-serif
 }
 
 @font-face {

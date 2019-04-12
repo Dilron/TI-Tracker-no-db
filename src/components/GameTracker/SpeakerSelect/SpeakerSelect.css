@@ -1,0 +1,24 @@
+.speaker-panel {
+    background: rgb(72, 70, 70);
+    border-radius: 0.4em;
+    padding: 2%;
+    width: 25%;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+}
+
+.panel-thumbnails {
+    width: 4em;
+    height: auto;
+    margin: .5em;
+}
