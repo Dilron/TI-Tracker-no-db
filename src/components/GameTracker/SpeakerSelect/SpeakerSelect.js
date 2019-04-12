@@ -21,7 +21,7 @@ export default class SpeakerSelect extends Component {
     render(){
         return(
             <div className='speaker-panel'>
-                <select onChange={(e) => this.handleSelect(e.target.value)}>
+                <select className='speaker-direction' onChange={(e) => this.handleSelect(e.target.value)}>
                     <option value={0}>Choose Direction</option>
                     <option value={1}>Up</option>
                     <option value={-1}>Down</option>
@@ -29,7 +29,8 @@ export default class SpeakerSelect extends Component {
                 <span>Select New Speaker:</span>
                 <div className='thumbnail-container'>
                     {this.props.playerArr.map((ele) => {
-                        return <img key={ele.id} 
+                        return <img alt='faction thumbnail'
+                        key={ele.id} 
                         className='panel-thumbnails' 
                         id={`speaker-thumbnail-${ele.id}`}
                         src={ele.gameRace.avatar}

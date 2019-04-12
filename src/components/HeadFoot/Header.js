@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import './Header.css';
 
 export default function Header() {
@@ -9,7 +9,7 @@ export default function Header() {
                         <h1 className='app-header-title'>Imperium Tracker</h1>
                         <h4 className='app-header-subtitle'>An unofficial tool for...</h4>
                     </div>
-                    <img className='twilight-png' src='http://i236.photobucket.com/albums/ff4/MrBlarney/TwilightImperium/TwilightImperium4e_Logo.png~original'/>
+                    <img alt='twilight imperium' className='twilight-png' src='http://i236.photobucket.com/albums/ff4/MrBlarney/TwilightImperium/TwilightImperium4e_Logo.png~original'/>
                 </header>
             </div>
         )   

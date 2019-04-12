@@ -27,19 +27,21 @@ export default class StrategyDraft extends Component {
     }
     
     render() {
+        let {draftOrder} = this.state
         return(
             <div className='draft-panel'>
-                <span className='draft-panel-header'>... Choosing:</span>
+                <span className='draft-panel-header'>{this.props.playerArr[draftOrder].gameRace.name} are choosing:</span>
                 {this.props.strategyCards.map((ele) => {
                     if(ele.open){ 
                     return <img 
+                    alt='draftable token'
                     className='draft-images-open' 
                     id={`draftcard${ele.id}`} 
                     src={ele.image} 
                     key={ele.id}
-                    onClick={() => this.handleStrategyClick(this.props.playerArr[this.state.draftOrder].id, ele.id)} />
+                    onClick={() => this.handleStrategyClick(this.props.playerArr[draftOrder].id, ele.id)} />
                     } else {
-                        return <img className='draft-images-closed' src={`${ele.image}`} />
+                        return <img alt='non-draftable token' key={ele.id} className='draft-images-closed' src={`${ele.image}`} />
                     }
                 })}
             </div>

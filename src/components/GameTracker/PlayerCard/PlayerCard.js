@@ -46,7 +46,7 @@ export default class PlayerCard extends Component {
                         <img className='player-strategy-card' 
                         src={`${this.props.player.strategyCard.image}`} />
                         :
-                        <a></a>
+                        <p></p>
                         }
                     </div>
                 </div>

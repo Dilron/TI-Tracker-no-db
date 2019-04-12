@@ -19,13 +19,14 @@ export default class PlayerForm extends Component {
     }
 
     render(){
+        let {selectorDisable, selectorValue} = this.state
         return(
-            this.state.selectorDisable ? 
+            selectorDisable ? 
                 <div className='player-form'>
                     <div>
                         <h4>Player: {this.props.player.playerName}</h4>
                         <select disabled>
-                            <option>{`${this.state.selectorValue}`}</option>
+                            <option>{`${selectorValue}`}</option>
                         </select>
                     </div>
                     <button onClick={() => this.props.removePlayer(this.props.player.id)} >Remove Player</button>

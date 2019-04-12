@@ -10,6 +10,8 @@ app.listen(port, () => {
     console.log('server listening on ', port)
 })
 
+app.get('/api/start', (req, res) => {res.send('server connected')})
+
 app.get('/request/players', PlayerCtrl.read)
 
 app.get('/request/factions', GameInfoCtrl.readFactions)
@@ -17,8 +19,6 @@ app.get('/request/factions', GameInfoCtrl.readFactions)
 app.get('/request/strategy-cards', GameInfoCtrl.readStrategyCards)
 
 app.post('/directive/players', PlayerCtrl.newPlayer)
-
-app.get('/api/start', (req, res) => {res.send('server connected')})
 
 app.delete('/directive/players/:id', PlayerCtrl.remove)
 

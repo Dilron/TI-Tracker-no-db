@@ -91,9 +91,7 @@ export default class GameTracker extends Component {
 
     clearStrategyCards = () => {
         let newPlayerArr = this.state.playerArr
-        newPlayerArr.map((ele) => {
-            ele.strategyCard = null
-        })
+        newPlayerArr.map((ele) => ele.strategyCard = null)
         this.setState({playerArr: newPlayerArr})
     }
 
