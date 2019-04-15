@@ -43,8 +43,11 @@ export default class PlayerCard extends Component {
                         className='speaker-arrow' 
                         src='http://res.freestockphotos.biz/pictures/3/3676-illustration-of-a-curved-up-3d-arrow-pv.png'/>
                         { this.props.player.strategyCard ? 
-                        <img className='player-strategy-card' 
-                        src={`${this.props.player.strategyCard.image}`} />
+                        <div>
+                            <img className='player-strategy-card' 
+                                src={`${this.props.player.strategyCard.image}`} />
+                            <h4 className='ini-tracker'>Initiative: {this.props.player.strategyCard.id}</h4>
+                        </div>
                         :
                         <p></p>
                         }

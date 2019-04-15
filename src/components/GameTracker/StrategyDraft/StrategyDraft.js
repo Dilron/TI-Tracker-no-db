@@ -39,6 +39,7 @@ export default class StrategyDraft extends Component {
                     id={`draftcard${ele.id}`} 
                     src={ele.image} 
                     key={ele.id}
+                    
                     onClick={() => this.handleStrategyClick(this.props.playerArr[draftOrder].id, ele.id)} />
                     } else {
                         return <img alt='non-draftable token' key={ele.id} className='draft-images-closed' src={`${ele.image}`} />

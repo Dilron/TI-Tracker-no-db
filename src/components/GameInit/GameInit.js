@@ -50,6 +50,12 @@ export default class GameInit extends Component {
         this.setState({nameInput: val})
     }
 
+    handleKeyDown = (e) => {
+        if(e.key === 'Enter'){
+            this.handleNewPlayer()
+        }
+    }
+
     //processes remove player input before passing id to app.js to .delete from server
     removePlayer = (playerId) => {
         let parseId = parseInt(playerId)
@@ -87,7 +93,12 @@ export default class GameInit extends Component {
                 <header className="game-init-header">
                     <h2 className='init-header-title'>Game Setup</h2>
                     <div>
-                        <input  value={this.state.nameInput} className='init-name-field' type='text' onChange={(e) => this.handleChange(e.target.value)} placeholder='Enter Name' />
+                        <input  value={this.state.nameInput}
+                        onKeyDown={this.handleKeyDown} 
+                        className='init-name-field' 
+                        type='text' 
+                        onChange={(e) => this.handleChange(e.target.value)} 
+                        placeholder='Enter Name' />
                         <button onClick={this.handleNewPlayer}>Add Player</button>
                     </div>
                 </header>
