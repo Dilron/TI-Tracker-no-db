@@ -12,6 +12,7 @@ export default class GameTracker extends Component {
             playerArr: [],
             strategyCards: [],
             showSpeaker: false,
+            speakerDir: 0,
             showStrategy: false,
         }
     }
@@ -19,6 +20,7 @@ export default class GameTracker extends Component {
     componentDidMount = () => {
         axios.get('/request/players').then( res => {
             this.setState({playerArr: res.data})
+            console.log('fired tracker player request')
           })
             .catch(err => console.log('encountered error retrieving players array: ', err))
         axios.get('/request/strategy-cards').then( res => {
@@ -40,9 +42,15 @@ export default class GameTracker extends Component {
                 speakerToken.style.opacity = 1
                 arrowToken.style.opacity = 1
             }
-
         })
-        this.setState({showSpeaker: false})
+        arr.map((ele) => {
+            if(ele.id === idVal){
+                ele.speaker = true
+            } else {
+                ele.speaker = false
+            }
+        })
+        this.setState({showSpeaker: false, playerArr: arr})
     }
 
     toggleArrow = (val, id) => {
@@ -51,8 +59,10 @@ export default class GameTracker extends Component {
         let arrowToken = document.querySelector(`#arrow${idInt}`)
         if(valInt !== 0 && valInt === -1){
             arrowToken.style.transform = `scaleY(-1)`
+            this.setState({speakerDir: 0})
         } else if(valInt !== 0 && valInt === 1){
             arrowToken.style.transform = `scaleY(1)`
+            this.setState({speakerDir: 1})
         }
     }
 
@@ -96,7 +106,7 @@ export default class GameTracker extends Component {
     }
 
     render(){
-        let {playerArr, showSpeaker, showStrategy, strategyCards} = this.state
+        let {playerArr, showSpeaker, showStrategy, strategyCards, speakerDir} = this.state
         return(
             <div className='game-tracker-container'>
                 <div className='player-card-container'>
@@ -116,6 +126,7 @@ export default class GameTracker extends Component {
                 /> 
                 : showStrategy ?
                 <StrategyDraft
+                speakerDir={speakerDir}
                 strategyCards={strategyCards}
                 assignStrategyCard={this.assignStrategyCard}
                 playerArr={playerArr}

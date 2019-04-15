@@ -99,7 +99,7 @@ export default class GameInit extends Component {
                         type='text' 
                         onChange={(e) => this.handleChange(e.target.value)} 
                         placeholder='Enter Name' />
-                        <button onClick={this.handleNewPlayer}>Add Player</button>
+                        <button onClick={() => this.handleNewPlayer()}>Add Player</button>
                     </div>
                 </header>
                 {this.props.playerArr.map(ele => {

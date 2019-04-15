@@ -12,7 +12,7 @@ class App extends Component {
     super()
     this.state = {
       playerArr: [],
-      gameStateInit: false,
+      gameStateInit: true,
     }
   }
 
@@ -21,6 +21,7 @@ class App extends Component {
     .catch(err => console.log('Did not connect to server: ', err))
     axios.get('/request/players').then( res => {
       this.setState({playerArr: res.data})
+      console.log('fired player request')
     })
     .catch(err => console.log('encountered error retrieving players array: ', err))
   }
@@ -28,6 +29,7 @@ class App extends Component {
   handleNewPlayer = (name) => {
     axios.post('/directive/players', name).then(res => {
       this.setState({playerArr: res.data})
+      console.log('new player sent')
     })
     .catch(err => console.log('err in handleNewPlayer(): ', err))
   }
