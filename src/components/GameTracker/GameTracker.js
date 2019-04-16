@@ -4,6 +4,7 @@ import SpeakerSelect from './SpeakerSelect/SpeakerSelect'
 import StrategyDraft from './StrategyDraft/StrategyDraft'
 import axios from 'axios'
 import './GameTracker.css'
+import TurnDisplay from './TurnDisplay/TurnDisplay';
 
 export default class GameTracker extends Component {
     constructor(){
@@ -12,8 +13,9 @@ export default class GameTracker extends Component {
             playerArr: [],
             strategyCards: [],
             showSpeaker: false,
-            speakerDir: 0,
+            speakerDir: 1,
             showStrategy: false,
+            showTurn: false,
         }
     }
 
@@ -89,7 +91,7 @@ export default class GameTracker extends Component {
     }
     
     toggleStrategyPanel = () => {
-        this.setState({showStrategy: !this.state.showStrategy})
+        this.setState({showStrategy: !this.state.showStrategy, showTurn: true})
     }
 
     handleDraftReset = () => {
@@ -105,8 +107,12 @@ export default class GameTracker extends Component {
         this.setState({playerArr: newPlayerArr})
     }
 
+    handleEndGame = () => {
+        this.props.endGame()
+    }
+
     render(){
-        let {playerArr, showSpeaker, showStrategy, strategyCards, speakerDir} = this.state
+        let {playerArr, showSpeaker, showStrategy, strategyCards, speakerDir, showTurn} = this.state
         return(
             <div className='game-tracker-container'>
                 <div className='player-card-container'>
@@ -135,8 +141,17 @@ export default class GameTracker extends Component {
                 clearStrategyCards={this.clearStrategyCards} />
                 :
                 <div className='tracker-control-panel'>
-                    <button className='control-panel-buttons' onClick={() => this.toggleSpeakerPanel()}>Choose Speaker</button>
-                    <button className='control-panel-buttons' onClick={() => this.toggleStrategyPanel()}>Redraft Strategy Tokens</button>
+                    <div>
+                        <button className='control-panel-buttons' onClick={() => this.toggleSpeakerPanel()}>Choose Speaker</button>
+                        <button className='control-panel-buttons' onClick={() => this.toggleStrategyPanel()}>Redraft Strategy Tokens</button>
+                        <button className='control-panel-buttons' onClick={() => this.handleEndGame()}>End Game</button>
+                    </div>
+                    {showTurn ?
+                    <TurnDisplay
+                    playerArr={playerArr} />
+                    :
+                    <p></p>
+                    }
                 </div>}
                 
             </div>

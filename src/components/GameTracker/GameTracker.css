@@ -20,9 +20,11 @@
     padding: 2%;
     width: 23%;
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
-
-
 
 .control-panel-buttons {
     width: 100%;

@@ -48,6 +48,14 @@ class App extends Component {
     .catch(err => console.log('error encountered finalizing game: ', err))
   }
 
+  endGame = () => {
+    let reset = []
+    axios.put('/directive/players/finalize', reset).then(res => {
+      this.setState({playerArr: res.data, gameStateInit: !this.state.gameStateInit})
+    })
+    .catch(err => console.log('error encountered ending game: ', err))
+  }
+
   render() {
     return (
       this.state.gameStateInit ?
@@ -63,7 +71,8 @@ class App extends Component {
       :
       <div className='App'>
         <Header />
-        <GameTracker />
+        <GameTracker 
+        endGame={this.endGame}/>
         <Footer />
       </div>
     );
