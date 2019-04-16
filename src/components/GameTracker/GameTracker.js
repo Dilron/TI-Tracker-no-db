@@ -91,7 +91,19 @@ export default class GameTracker extends Component {
     }
     
     toggleStrategyPanel = () => {
-        this.setState({showStrategy: !this.state.showStrategy, showTurn: true})
+        if(this.state.playerArr.some(ele => ele.speaker)){
+            this.setState({showStrategy: !this.state.showStrategy})
+        } else {
+            alert('A player must be nominated speaker first')
+        }
+    }
+
+    toggleTurnPanel = () => {
+        if(this.state.playerArr.every(ele => ele.strategyCard)){
+            this.setState({showTurn: !this.state.showTurn})
+        } else {
+            alert('All players must draft a Strategy Token first')
+        }
     }
 
     handleDraftReset = () => {
@@ -148,9 +160,10 @@ export default class GameTracker extends Component {
                     </div>
                     {showTurn ?
                     <TurnDisplay
-                    playerArr={playerArr} />
+                    playerArr={playerArr}
+                    toggleTurnPanel={this.toggleTurnPanel} />
                     :
-                    <p></p>
+                    <button className='control-panel-buttons' onClick={() => this.toggleTurnPanel()}>Begin Action Phase Turns</button>
                     }
                 </div>}
                 

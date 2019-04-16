@@ -1,8 +1,15 @@
 .turn-display-container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .turn-faction-img {
     width: 100%;
     height: auto;
+}
+
+.turn-button-container {
+    display: flex;
 }

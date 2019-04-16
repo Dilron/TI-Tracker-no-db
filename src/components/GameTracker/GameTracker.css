@@ -1,7 +1,6 @@
 .game-tracker-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 2em;
 }
 
 .player-card-container {

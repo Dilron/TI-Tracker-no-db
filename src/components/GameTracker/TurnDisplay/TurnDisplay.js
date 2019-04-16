@@ -11,16 +11,22 @@ export default class TurnDisplay extends Component {
     }
 
     componentDidMount = () => {
-        if(this.props.playerArr.every((ele) => ele.strategyCard)){
+        this.setTurnOrder()
+    }
+
+    setTurnOrder = () => {
             let tempArr = []
             for(let i = 1; i < 9; i++){
                 let check = this.props.playerArr.findIndex((ele) => ele.strategyCard.id === i)
                 if(check !== -1){
-                    tempArr.push(check)
+                    if(this.props.playerArr[check].gameRace.id !== 4){
+                        tempArr.push(check)
+                    } else if(this.props.playerArr[check].gameRace.id === 4){
+                        tempArr.unshift(check)
+                    }
                 }
             }
             this.setState({turnOrder: tempArr})
-        }
     }
 
     handleEndTurn = () =>{
@@ -34,10 +40,14 @@ export default class TurnDisplay extends Component {
     handlePassTurn = () =>{
         let newTurnOrder = this.state.turnOrder
         newTurnOrder.splice(this.state.turn, 1)
-        if(this.state.turn === newTurnOrder.length){
-            this.setState({turn: 0, turnOrder: newTurnOrder})
+        if(newTurnOrder.length < 1){
+            this.props.toggleTurnPanel()
         } else {
-            this.setState({turnOrder: newTurnOrder})
+            if(this.state.turn === newTurnOrder.length){
+                this.setState({turn: 0, turnOrder: newTurnOrder})
+            } else {
+                this.setState({turnOrder: newTurnOrder})
+            }
         }
     }
 
@@ -45,10 +55,12 @@ export default class TurnDisplay extends Component {
         let {turn, turnOrder} = this.state
         return(
             <div className='turn-display-container'>
-                <h4 className='turn-faction-title'></h4>
+                <h4 className='turn-faction-title'>{this.props.playerArr[turnOrder[turn]].gameRace.name} are taking their turn</h4>
                 <img className='turn-faction-img' src={this.props.playerArr[turnOrder[turn]].gameRace.avatar} />
-                <button onClick={() => this.handleEndTurn()}>Next Turn</button>
-                <button onClick={() => this.handlePassTurn()}>Pass Turn</button>
+                <div className='turn-button-container'>
+                    <button className='turn-button' onClick={() => this.handleEndTurn()}>Next Turn</button>
+                    <button className='turn-button' onClick={() => this.handlePassTurn()}>Pass Turn</button>
+                </div>
             </div>
         )
     }
